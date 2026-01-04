@@ -1,0 +1,16 @@
+// This is a generated file. Not intended for manual editing.
+package com.example.cobolstaticanalysisplugin.psi;
+
+import java.util.List;
+import org.jetbrains.annotations.*;
+import com.intellij.psi.PsiElement;
+
+public interface CobolProcedureBody extends PsiElement {
+
+  @NotNull
+  List<CobolParagraph> getParagraphList();
+
+  @NotNull
+  List<CobolProcedureStatement> getProcedureStatementList();
+
+}

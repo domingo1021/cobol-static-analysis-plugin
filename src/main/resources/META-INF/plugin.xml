@@ -26,24 +26,24 @@
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
   <extensions defaultExtensionNs="com.intellij">
     <fileType
-      name="Simple File"
-      implementationClass="com.example.cobolstaticanalysisplugin.SimpleFileType"
+      name="COBOLE File"
+      implementationClass="com.example.cobolstaticanalysisplugin.CobolFileType"
       fieldName="INSTANCE"
-      language="Simple"
-      extensions="simple"/>
+      language="COBOL"
+      extensions="cbl"/>
   </extensions>
   <extensions defaultExtensionNs="com.intellij">
     <lang.parserDefinition
-      language="Simple"
-      implementationClass="com.example.cobolstaticanalysisplugin.SimpleParserDefinition"/>
+      language="COBOL"
+      implementationClass="com.example.cobolstaticanalysisplugin.CobolParserDefinition"/>
   </extensions>
   <extensions defaultExtensionNs="com.intellij">
     <lang.syntaxHighlighterFactory
-      language="Simple"
-      implementationClass="com.example.cobolstaticanalysisplugin.SimpleSyntaxHighlighterFactory"/>
+      language="COBOL"
+      implementationClass="com.example.cobolstaticanalysisplugin.CobolSyntaxHighlighterFactory"/>
   </extensions>
   <extensions defaultExtensionNs="com.intellij">
     <colorSettingsPage
-      implementation="com.example.cobolstaticanalysisplugin.SimpleColorSettingPage"/>
+      implementation="com.example.cobolstaticanalysisplugin.CobolColorSettingPage"/>
   </extensions>
 </idea-plugin>

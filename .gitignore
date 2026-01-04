@@ -17,8 +17,6 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea/*
-.intellijPlatform
-.run
 
 ### Eclipse ###
 .apt_generated
@@ -44,7 +42,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-
-### Flex generted files ###
-jflex-1.9.2.jar
-idea-flex.skeleton

@@ -1,0 +1,57 @@
+{
+  parserClass="com.example.cobolstaticanalysisplugin.parser.CobolParser"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+  psiClassPrefix="Cobol"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.example.cobolstaticanalysisplugin.psi"
+  psiImplPackage="com.example.cobolstaticanalysisplugin.psi.impl"
+  elementTypeHolderClass="com.example.cobolstaticanalysisplugin.CobolTypes"
+  elementTypeClass="com.example.cobolstaticanalysisplugin.CobolElementType"
+  tokenTypeClass="com.example.cobolstaticanalysisplugin.CobolTokenType"
+}
+
+cobolFile ::= cobolSourceProgram
+
+cobolSourceProgram ::= identificationDivision dataDivision? procedureDivision?
+
+private line_start ::= LEVEL_NUMBER_TOKEN
+private dot_sep ::= DOT
+private optional_dot ::= DOT?
+
+identificationDivision ::=
+    line_start IDENTIFICATION DIVISION dot_sep
+    line_start PROGRAM_ID optional_dot USER_DEFINED_WORD optional_dot
+
+dataDivision ::=
+    line_start DATA DIVISION dot_sep
+    working_storage_section?
+    dataDefinition*
+
+working_storage_section ::=
+    line_start WORKING_STORAGE SECTION dot_sep
+    dataDefinition*
+
+
+dataDefinition ::=
+    line_start (INTEGER | ZERO) USER_DEFINED_WORD (PIC pictureDef)? (VALUE literal)? dot
+
+pictureDef ::= (USER_DEFINED_WORD | INTEGER | ZERO) (LPAREN (INTEGER | ZERO) RPAREN)?
+
+procedureDivision ::=
+    line_start PROCEDURE DIVISION dot_sep
+    procedureBody
+
+procedureBody ::= (paragraph | procedureStatement)*
+
+paragraph ::= line_start USER_DEFINED_WORD dot_sep
+
+procedureStatement ::= line_start (performStatement | stopStatement | displayStatement)
+
+performStatement ::= PERFORM USER_DEFINED_WORD (VARYING USER_DEFINED_WORD FROM literal BY literal UNTIL condition)? optional_dot
+stopStatement ::= STOP RUN optional_dot
+displayStatement ::= DISPLAY (literal | USER_DEFINED_WORD)* optional_dot
+
+condition ::= identifier_or_literal (EQ | "=") identifier_or_literal
+literal ::= INTEGER | ZERO | STRING
+
+private identifier_or_literal ::= USER_DEFINED_WORD | literal
