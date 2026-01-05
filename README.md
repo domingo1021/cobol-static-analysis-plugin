@@ -28,6 +28,7 @@ The ultimate goal is to build a minimal COBOL plugin in IntelliJ IDEA to parse e
 - [ ] PsiViewer
 2. (Optional) Generate the parser and lexer code in Java with Grammar-Kit and JFlex, but to upload full compilable plugin, I've uploaded all the required generated code in the repository.
 3. [Run the Gradle task `runIde`](https://plugins.jetbrains.com/docs/intellij/language-and-filetype.html#run-the-project) to launch a new instance of IntelliJ IDEA with the plugin installed.
+4. Create a new file with `.cbl` extension and paste the example COBOL code above.
 
 # Expected Result
 <img src="./public/result-snapshot.png" alt="Result snapshot" width="500"/>
